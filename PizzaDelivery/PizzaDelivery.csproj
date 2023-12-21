@@ -1,0 +1,112 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="View\Resourses\Fonts\BlueCurve.ttf" />
+    <None Remove="View\Resourses\Fonts\Hero.ttf" />
+    <None Remove="View\Resourses\Images\account.png" />
+    <None Remove="View\Resourses\Images\addImage.png" />
+    <None Remove="View\Resourses\Images\addPizza.png" />
+    <None Remove="View\Resourses\Images\back.png" />
+    <None Remove="View\Resourses\Images\cart.png" />
+    <None Remove="View\Resourses\Images\clients.png" />
+    <None Remove="View\Resourses\Images\exit.png" />
+    <None Remove="View\Resourses\Images\file.png" />
+    <None Remove="View\Resourses\Images\ingredient.png" />
+    <None Remove="View\Resourses\Images\logo.png" />
+    <None Remove="View\Resourses\Images\minus.png" />
+    <None Remove="View\Resourses\Images\order.png" />
+    <None Remove="View\Resourses\Images\orders.png" />
+    <None Remove="View\Resourses\Images\pizza.png" />
+    <None Remove="View\Resourses\Images\viewDetails.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\Resourses\Fonts\BlueCurve.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\account.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\addImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\addPizza.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\back.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\cart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\clients.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\exit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\file.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\ingredient.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\Resourses\Images\close.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\maximize.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\minimize.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\minus.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\order.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\orders.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\pizza.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\reduce.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Fonts\Hero.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resourses\Images\viewDetails.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

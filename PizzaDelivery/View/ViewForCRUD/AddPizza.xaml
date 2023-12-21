@@ -1,0 +1,120 @@
+﻿<Window x:Class="PizzaDelivery.View.ViewForCRUD.AddPizza"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaDelivery.View.ViewForCRUD" 
+        xmlns:vm="clr-namespace:PizzaDelivery.ViewModel.ForCRUD"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Background="Transparent"
+        Title="AddPizza" Height="450" Width="600"
+        FontFamily="#Bahnschrift"
+        FontWeight="Light">
+    
+    <Window.DataContext>
+        <vm:AddPizzaViewModel/>
+    </Window.DataContext>
+
+    <Border Background="White"
+           CornerRadius="10"
+           BorderBrush="#31393C"
+           BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="ДОБАВИТЬ ПИЦЦУ"
+                           Foreground="Gray"
+                           FontSize="10"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnClose"
+                       Grid.Column="1"
+                       Click="btnClose_Click"
+                       Style="{StaticResource topButton}">
+                    <Image Source="../Resourses/Images/close.png" Width="13" />
+                </Button>
+            </Grid>
+            <!-- верхние кнопки-->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="1.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="0 0 0 10" Style="{StaticResource AddPhotoButtonStyle}" Grid.ColumnSpan="2" Command="{Binding AddImageCommand}">
+                            <Grid>
+                                <Image VerticalAlignment="Center" Source="../Resourses/Images/addImage.png" Width="30"/>
+                                <Image Source ="{Binding PizzaImage}"/>
+                            </Grid>
+                        </Button>
+                        <TextBlock VerticalAlignment="Center" Grid.Row="1" Text="Название"/>
+                        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock VerticalAlignment="Center" Grid.Row="2" Text="Цена"/>
+                        <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="{Binding Price, StringFormat= '0 руб.'}"/>
+
+                    </Grid>
+                    <Border Grid.Column="2" Margin="15 5 5 5" Padding="5 5 0 5" BorderBrush="#E1E1E1" CornerRadius="10" BorderThickness="1">
+                        <ScrollViewer >
+                        <ItemsControl  ItemsSource="{Binding AllIngredients, UpdateSourceTrigger=PropertyChanged}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Regular" Margin="0 7 0 0" />
+                                        <ItemsControl ItemsSource="{Binding Ingredients, UpdateSourceTrigger=PropertyChanged}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                        <Grid Width="140">
+                                                            <CheckBox  Content="{Binding Name}" IsChecked="{Binding IsSelected, Mode=TwoWay}" Command="{Binding DataContext.SelectIngredientCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                                                        CommandParameter="{Binding }"/>
+                                                        </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    </Border>
+                </Grid>
+                <TextBlock VerticalAlignment="Center" Margin="5 0 0 0" FontSize="10" Grid.Row="1" Text="{Binding ErrorMessage}" FontWeight="Bold" Foreground="#FFD20606"/>
+                <Button Margin="0 0 0 10"  Content="Добавить" Grid.Row="2" Style="{StaticResource buttonStyle}"
+                        Command="{Binding AddPizzaCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

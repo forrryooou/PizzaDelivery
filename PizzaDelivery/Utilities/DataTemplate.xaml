@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vmA="clr-namespace:PizzaDelivery.ViewModel.ForAdminPages"
+                    xmlns:viewA="clr-namespace:PizzaDelivery.View.AdminPages"
+                    xmlns:vmC="clr-namespace:PizzaDelivery.ViewModel.ForClientPages"
+                    xmlns:viewC="clr-namespace:PizzaDelivery.View.ClientPages">
+    <!--admin's-->
+    <DataTemplate DataType="{x:Type vmA:OrdersViewModel}">
+        <viewA:Orders />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmA:PizzasViewModel}">
+        <viewA:Pizzas />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmA:IngredientsViewModel}">
+        <viewA:Ingredients />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmA:ClientsViewModel}">
+        <viewA:Clients />
+    </DataTemplate>
+    
+    
+    <!--client's-->
+    <DataTemplate DataType="{x:Type vmC:AccountViewModel}">
+        <viewC:Account />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmC:CartViewModel}">
+        <viewC:Cart/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmC:HistoryOfOrdersViewModel}">
+        <viewC:HistoryOfOrders />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmC:MenuViewModel}">
+        <viewC:Menu />
+    </DataTemplate>
+
+</ResourceDictionary>

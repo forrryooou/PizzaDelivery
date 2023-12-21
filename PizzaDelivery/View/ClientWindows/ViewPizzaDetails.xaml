@@ -1,0 +1,54 @@
+﻿<Window x:Class="PizzaDelivery.View.ClientWindows.ViewPizzaDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:PizzaDelivery.ViewModel.ForClientWindows"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Background="Transparent"
+        Title="ViewPizza" Height="380" Width="300"
+        FontFamily="#Bahnschrift"
+        FontWeight="Light">
+
+    <Border Background="White"
+           CornerRadius="10"
+           BorderBrush="#31393C"
+           BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnClose"
+                       Grid.Column="1"
+                       Click="btnClose_Click"
+                       Style="{StaticResource topButton}">
+                    <Image Source="../Resourses/Images/close.png" Width="13" />
+                </Button>
+            </Grid>
+            <!-- верхние кнопки-->
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image Source ="{Binding SelectedPizza.Image}" Width="200"/>
+                <TextBlock Grid.Row="1" Width="250" FontWeight="Regular" VerticalAlignment="Bottom" Text="{Binding SelectedPizza.Name}" FontSize="18" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Width="250" Margin="0 3 0 0" FontWeight="Bold"  FontSize="14" Text="{Binding SelectedPizza.Price, StringFormat= '0 ₽'}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="3" Margin="0 15 0 0" TextAlignment="Justify" Width="250" FontWeight="ExtraLight" TextWrapping="Wrap" Text="{Binding Ingredients}" HorizontalAlignment="Center" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
