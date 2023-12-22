@@ -20,7 +20,7 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="4*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -32,21 +32,25 @@
                                         <TextBlock Grid.Row="1" FontSize="16" FontWeight="UltraLight" Text="{Binding Date, StringFormat={}{0:dd.MM.yyy hh:mm}}" Margin="0 5 0 3"/>
                                         <TextBlock Grid.Row="2" FontSize="16" FontWeight="Bold" Text="{Binding Price, StringFormat= '0 ₽'}"/>
                                     </Grid>
-                                    
-                                    <ItemsControl Grid.Column="1" ItemsSource="{Binding OrderLines, UpdateSourceTrigger=PropertyChanged}">
+                                    <ScrollViewer Grid.Column="1" >
+                                    <ItemsControl ItemsSource="{Binding OrderLines, UpdateSourceTrigger=PropertyChanged}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition Width="35"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock HorizontalAlignment="Right" FontSize="16" TextWrapping="WrapWithOverflow" FontWeight="UltraLight" Text="{Binding Pizza.Name}" />
-                                                    <TextBlock VerticalAlignment="Center" Grid.Column="1" FontSize="16" FontWeight="UltraLight" Text="{Binding Quantity, StringFormat='  x  0'}" />
-                                                </Grid>
-                                            </DataTemplate>
+                                                    <StackPanel>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition Width="35"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock HorizontalAlignment="Left" FontSize="16"  TextWrapping="Wrap" FontWeight="UltraLight" Text="{Binding Pizza.Name}" />
+                                                            <TextBlock VerticalAlignment="Center" Grid.Column="1" FontSize="16" FontWeight="UltraLight" Text="{Binding Quantity, StringFormat='  x  0'}" />
+                                                        </Grid>
+                                                        <Separator Margin="2" Height="0.8" Background="#FFE2E2E2"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
+                                    </ScrollViewer>
                                 </Grid>
                             </Border>
                         </StackPanel>

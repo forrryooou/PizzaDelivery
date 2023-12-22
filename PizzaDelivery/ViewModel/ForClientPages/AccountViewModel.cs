@@ -71,7 +71,7 @@ namespace PizzaDelivery.ViewModel.ForClientPages
                     canSave = false;
                 }
             }
-            if (curClient.User.Password != Password)
+            if (curClient.User.Password != Password || !string.IsNullOrWhiteSpace(Password))
             {
                 ErrorMessage = "Неверный пароль";
                 canSave = false;

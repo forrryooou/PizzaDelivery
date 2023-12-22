@@ -6,11 +6,71 @@
              xmlns:local="clr-namespace:PizzaDelivery.View.AdminPages"
              xmlns:vm="clr-namespace:PizzaDelivery.ViewModel.ForAdminPages"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.DataContext>
-        <vm:OrdersViewModel />
+        <vm:OrdersViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="Заказы" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource buttonStyle}" Margin="10 10 0 0" Content="Обновить" Command="{Binding UpdateOrdersCommand}"/>
+        <Separator Background="#FFE2E2E2" Grid.Row="1"  Margin="20 9 20 0" />
+        <ScrollViewer Grid.Row="2" Margin="5">
+            <ItemsControl Margin="0 15 0 0" ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Border Width="375" Height="270" Background="white" Padding="10" BorderBrush="#E1E1E1" BorderThickness="1,1,2,2" CornerRadius="10" Margin="10">
+                                <StackPanel>
+                                    <ComboBox Style="{StaticResource ComboboxStyle}"
+                                              ItemsSource="{Binding DataContext.Statuses, RelativeSource={RelativeSource AncestorType=local:Orders}}"
+                                              DisplayMemberPath="Name"
+                                              SelectedValuePath="Id"
+                                              SelectedValue="{Binding StatusId, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Grid.Row="1" FontSize="16" FontWeight="Normal" Text="{Binding Date, StringFormat={}{0:dd.MM.yyy hh:mm}}" Margin="0 5 0 3"/>
+                                    <TextBlock Grid.Row="1" FontSize="16" FontWeight="Normal" Text="{Binding Client.Address, StringFormat='Адрес:  {0}'}" Margin="0 5 0 3"/>
+                                    <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Client.Number, StringFormat='Номер телефона:  {0}'}" FontSize="16" FontWeight="Normal"/>
+                                        <TextBlock Text="{Binding Client.Name, StringFormat='  ({0})'}" FontSize="16" FontWeight="Normal"/>
+                                    </StackPanel>
+                                    <Border BorderBrush="Gray" Padding="10 5 0 0" BorderThickness="0.5" CornerRadius="10">
+                                        <ScrollViewer Height="96">
+                                            <ItemsControl Grid.Column="1" ItemsSource="{Binding OrderLines, UpdateSourceTrigger=PropertyChanged}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition/>
+                                                                    <ColumnDefinition Width="35"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" FontWeight="UltraLight" Text="{Binding Pizza.Name}" />
+                                                                <TextBlock VerticalAlignment="Center" Grid.Column="1" FontSize="16" FontWeight="UltraLight" Text="{Binding Quantity, StringFormat='  x  0'}" />
+                                                            </Grid>
+                                                            <Separator Background="#E1E1E1"/>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Border>
+                                    <TextBlock Margin="0 5 0 0" FontSize="16" FontWeight="Bold" Text="{Binding Price, StringFormat= 'Общая стоимость:  0 ₽'}"/>
+                                </StackPanel>
+                                
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>

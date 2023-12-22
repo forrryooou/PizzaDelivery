@@ -106,8 +106,8 @@ namespace PizzaDelivery.ViewModel.ForCRUD
 
             if (openFileDialog.ShowDialog() == true)
             {
-                //BitmapImage bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
-                //PizzaImage = bitmap;
+                BitmapImage bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
+                PizzaImage = bitmap;
                 ImageBytes = File.ReadAllBytes(openFileDialog.FileName);
             }
         }

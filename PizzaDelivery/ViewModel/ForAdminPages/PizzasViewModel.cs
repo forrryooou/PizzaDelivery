@@ -56,7 +56,7 @@ namespace PizzaDelivery.ViewModel.ForAdminPages
             addPizza = new AddPizza();
             AddPizzaViewModel viewModel = new AddPizzaViewModel();
             addPizza.DataContext = viewModel;
-            addPizza.Closed += (s, e) => new ObservableCollection<Pizza>(context.Pizzas.GetList().Where(p => p.TypeId == 1).ToList());
+            addPizza.Closed += (s, e) => Pizzas = new ObservableCollection<Pizza>(context.Pizzas.GetList().Where(p => p.TypeId == 1).ToList());
             addPizza.Show();
         }
     }
