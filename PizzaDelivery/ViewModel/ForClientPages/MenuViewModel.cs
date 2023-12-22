@@ -24,18 +24,19 @@ namespace PizzaDelivery.ViewModel.ForClientPages
         }
 
         public ICommand ViewPizzaCommand { get; set; }
-        public ICommand EditPizzaCommand { get; set; }
+        public ICommand CreateClientPizzaCommand { get; set; }
 
 
         private ClientViewModel clientViewModel;
         public ICommand AddPizzaToCartCommand { get; set; }
         public MenuViewModel(ClientViewModel _clientViewModel)
         {
+            CreateClientPizzaCommand = new RelayCommand(CreatePizza);
             AddPizzaToCartCommand = new RelayCommand(AddPizza);
             clientViewModel = _clientViewModel;
             ViewPizzaCommand = new RelayCommand(ViewPizza);
             context = new DbRepos();
-            Pizzas = context.Pizzas.GetList();
+            Pizzas = new ObservableCollection<Pizza>( context.Pizzas.GetList().Where(p=>p.TypeId==1).ToList());
 
         }
 
@@ -69,10 +70,9 @@ namespace PizzaDelivery.ViewModel.ForClientPages
 
         private void CreatePizza(object obj)
         {
-            AddPizza addPizza = new AddPizza();
-            AddPizzaViewModel viewModel = new AddPizzaViewModel();
+            AddClientPizza addPizza = new AddClientPizza();
+            AddClientPizzaViewModel viewModel = new AddClientPizzaViewModel(clientViewModel);
             addPizza.DataContext = viewModel;
-            addPizza.Closed += (s, e) => Pizzas = context.Pizzas.GetList();
             addPizza.Show();
         }
     }

@@ -6,6 +6,7 @@ using PizzaDelivery.ViewModel.CustomEntities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -78,8 +79,22 @@ namespace PizzaDelivery.ViewModel.ForClientWindows
                 var orderLines = new ObservableCollection<OrderLine>();
                 foreach (PizzaInCart p in pizzas)
                 {
+                    if (p.TypeId == 2)
+                    {
+                        Pizza clientPizza = new Pizza()
+                        {
+                            Name = p.Name,
+                            TypeId = p.TypeId
+                        };
+                        foreach (var ing in p.Ingredients) clientPizza.Ingredients.Add(context.Ingredients.GetItem(ing.Id));
+                        clientPizza.Price = clientPizza.Ingredients.Select(x => x.Price).Sum();
+                        context.Pizzas.Create(clientPizza);
+                        context.Save();
+                        p.Id = clientPizza.Id;
+                    }
+                    var pizza = context.Pizzas.GetItem(p.Id);
                     var line = new OrderLine();
-                    line.PizzaId = p.Id;
+                    line.PizzaId = pizza.Id;
                     line.Quantity = p.Quantity;
                     orderLines.Add(line);
                 }

@@ -17,6 +17,8 @@ namespace PizzaDelivery.ViewModel.CustomEntities
             Price = pizza.Price;
             Image = pizza.Image;
             Quantity = 1;
+            TypeId = pizza.TypeId;
+            Ingredients = pizza.Ingredients;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

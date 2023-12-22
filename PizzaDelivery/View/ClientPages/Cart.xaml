@@ -32,23 +32,24 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <Border BorderBrush="#E1E1E1" BorderThickness="1,1,2,2" Margin="10" Height="60" Background="White" CornerRadius="10">
+                            <Border Height="60" BorderBrush="#E1E1E1" BorderThickness="1,1,2,2" Margin="10"  Background="White" CornerRadius="10">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="65"/>
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="120" />
                                         <ColumnDefinition Width="120"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="5" Source="{Binding Image}"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="16" VerticalAlignment="Center" FontWeight="Light"/>
-                                    <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Price, StringFormat= '0 ₽'}"  FontSize="16" VerticalAlignment="Center" FontWeight="Bold"/>
-                                    <Border Height="30" Width="90"  Grid.Column="3" Margin="15 5 15 5" Background="Black" CornerRadius="15">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="auto" Margin="5" Source="{Binding Image}"/>
+                                        <TextBlock TextWrapping="Wrap" TextTrimming="WordEllipsis" Margin="10 0 0 0 " Text="{Binding Name}" FontSize="14" VerticalAlignment="Center" FontWeight="Light"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Price, StringFormat= '0 ₽'}"  FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                                    <Border Height="30" Width="90"  Grid.Column="2" Margin="15 5 15 5" Background="Black" CornerRadius="15">
                                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                             <Button CommandParameter="{Binding}" Command="{Binding DataContext.SubtractFromQuantityCommand, RelativeSource={RelativeSource AncestorType=local:Cart}}" Style="{StaticResource QuantityButtonStyle}">
                                                 <Image Source="../Resourses/Images/minus.png" Width="13" />
                                             </Button>
-                                            <TextBlock Foreground="White" Margin="10 0 10 0" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Thin" FontSize="16" VerticalAlignment="Center"/>
+                                            <TextBlock Foreground="White" Margin="10 0 10 0" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Thin" FontSize="14" VerticalAlignment="Center"/>
                                             <Button CommandParameter="{Binding}" Command="{Binding DataContext.AddToQuantityCommand, RelativeSource={RelativeSource AncestorType=local:Cart}}" Style="{StaticResource QuantityButtonStyle}">
                                                 <Image Source="../Resourses/Images/addPizza.png" Width="13" />
                                             </Button>

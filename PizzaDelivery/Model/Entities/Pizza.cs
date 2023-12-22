@@ -6,7 +6,7 @@ namespace PizzaDelivery.Model.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte[] Image { get; set; }
+        public byte[]? Image { get; set; }
         public int Price { get; set; }
 
         public ObservableCollection<OrderLine> OrderLines { get; set; }

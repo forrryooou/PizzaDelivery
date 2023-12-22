@@ -11,27 +11,48 @@
         <vm:HistoryOfOrdersViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <ScrollViewer Grid.Row="2">
+        <ScrollViewer Grid.Row="2" Margin="5">
             <ItemsControl Margin="0 15 0 0" ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Border Width="190" Height="100" Background="white" Padding="10" BorderBrush="#E1E1E1" BorderThickness="1,1,2,2" CornerRadius="10" Margin="10">
-                                <StackPanel>
-                                    <TextBlock FontWeight="Regular" Foreground="Green" Text="{Binding Status.Name}" Margin="0 5 0 3"/>
-                                    <TextBlock FontWeight="UltraLight" Text="{Binding Date}" Margin="0 5 0 3"/>
-                                    <TextBlock FontWeight="Bold" Text="{Binding Price, StringFormat= '0 ₽'}"/>
+                        <StackPanel>
+                            <Border Background="white" Padding="10" BorderBrush="#E1E1E1" BorderThickness="1,1,2,2" CornerRadius="10" Margin="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Margin="0 0 0 5" Grid.Row="0" FontSize="20" FontWeight="Regular" Foreground="Green" Text="{Binding Status.Name}" />
+                                        <TextBlock Grid.Row="1" FontSize="16" FontWeight="UltraLight" Text="{Binding Date, StringFormat={}{0:dd.MM.yyy hh:mm}}" Margin="0 5 0 3"/>
+                                        <TextBlock Grid.Row="2" FontSize="16" FontWeight="Bold" Text="{Binding Price, StringFormat= '0 ₽'}"/>
+                                    </Grid>
                                     
-                                </StackPanel>
+                                    <ItemsControl Grid.Column="1" ItemsSource="{Binding OrderLines, UpdateSourceTrigger=PropertyChanged}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition Width="35"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock HorizontalAlignment="Right" FontSize="16" TextWrapping="WrapWithOverflow" FontWeight="UltraLight" Text="{Binding Pizza.Name}" />
+                                                    <TextBlock VerticalAlignment="Center" Grid.Column="1" FontSize="16" FontWeight="UltraLight" Text="{Binding Quantity, StringFormat='  x  0'}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Grid>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+                
             </ItemsControl>
         </ScrollViewer>
     </Grid>

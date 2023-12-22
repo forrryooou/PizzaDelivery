@@ -140,10 +140,14 @@ namespace PizzaDelivery.ViewModel.ForCRUD
 
         private void DeletePizza(object obj)
         {
-            context.Pizzas.Delete(pizza.Id);
-            context.Save();
-
-            if (obj is Window window) window.Close();
+            var exist = context.OrderLines.GetList().Where(x => x.PizzaId == pizza.Id).FirstOrDefault();
+            if (exist != null) ErrorMessage = "Пицца не может быть удалена, так как содержится в заказах";
+            else
+            {
+                context.Pizzas.Delete(pizza.Id);
+                context.Save();
+                if (obj is Window window) window.Close();
+            }
         }
     }
 }

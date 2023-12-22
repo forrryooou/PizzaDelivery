@@ -20,7 +20,7 @@
         <StackPanel>
 
         </StackPanel>
-        <Button Width="170" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource buttonStyle}" Margin="10 10 20 0" Command="{Binding AddPizzaCommand}">
+        <Button Width="170" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource buttonStyle}" Margin="10 10 20 0" Command="{Binding CreateClientPizzaCommand}">
             <StackPanel Orientation="Horizontal">
                 <Image Margin="0 0 10 0" Source="../Resourses/Images/addPizza.png" Width="13"/>
                 <TextBlock FontSize="14" Foreground="White" Text="Создать пиццу"/>
