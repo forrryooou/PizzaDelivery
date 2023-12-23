@@ -34,11 +34,11 @@
                         <StackPanel Orientation="Horizontal">
                             <Border Width="190" Height="210" Background="white" Padding="10" BorderBrush="#E1E1E1" BorderThickness="1,1,2,2" CornerRadius="10" Margin="10">
                                 <StackPanel>
-                                    <Image Margin="0 10 0 0" Source="{Binding Image}" Width="140" Height="140"/>
+                                    <Image Margin="0 0 0 0" Source="{Binding Image}" Width="150" Height="150"/>
                                     <Button Command="{Binding DataContext.ViewPizzaCommand, RelativeSource={RelativeSource AncestorType=local:Menu}}" 
                                             CommandParameter="{Binding }" Width="25" Margin="0 -270 0 0" Height="25" HorizontalAlignment="Right" Style="{StaticResource ViewPizzaButtonStyle}"/>
-                                    <TextBlock FontWeight="UltraLight" Text="{Binding Name}" Margin="0 5 0 3"/>
-                                    <TextBlock FontWeight="Bold" Text="{Binding Price, StringFormat= '0 ₽'}"/>
+                                    <TextBlock FontWeight="UltraLight" Text="{Binding Name}" Margin="0 5 0 3" FontSize="14"/>
+                                    <TextBlock FontWeight="Bold" Text="{Binding Price, StringFormat= '0 ₽'}" FontSize="14"/>
                                     <Button Command="{Binding DataContext.AddPizzaToCartCommand, RelativeSource={RelativeSource AncestorType=local:Menu}}" 
                                             CommandParameter="{Binding }" Margin="0 -35 0 0" Style="{StaticResource AddPizzaButtonStyle}" Width="20" Height="20" HorizontalAlignment="Right"/>
                                 </StackPanel>

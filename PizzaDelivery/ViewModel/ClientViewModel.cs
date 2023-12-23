@@ -26,7 +26,7 @@ namespace PizzaDelivery.ViewModel
 
         private void Menu(object obj) => CurrentView = new MenuViewModel(this);
         private void Cart(object obj) => CurrentView = new CartViewModel(PizzasInCart,CurClient);
-        private void Orders(object obj) => CurrentView = new HistoryOfOrdersViewModel();
+        private void Orders(object obj) => CurrentView = new HistoryOfOrdersViewModel(CurClient);
         private void Account(object obj) => CurrentView = new AccountViewModel(CurClient);
 
         private DbRepos context;

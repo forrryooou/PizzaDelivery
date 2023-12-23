@@ -20,8 +20,12 @@
     <DataTemplate DataType="{x:Type vmA:ClientsViewModel}">
         <viewA:Clients />
     </DataTemplate>
-    
-    
+
+    <DataTemplate DataType="{x:Type vmA:ReportsViewModel}">
+        <viewA:Reports />
+    </DataTemplate>
+
+
     <!--client's-->
     <DataTemplate DataType="{x:Type vmC:AccountViewModel}">
         <viewC:Account />

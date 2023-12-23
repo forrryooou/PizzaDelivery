@@ -10,7 +10,7 @@
         MouseDown="Window_MouseDown"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" Background="Transparent"
-        Title="AddPizza" Height="450" Width="600"
+        Title="AddPizza" Height="450" Width="670"
         FontFamily="#Bahnschrift"
         FontWeight="Light">
     
@@ -57,7 +57,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition Width="1.48*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
@@ -91,7 +91,7 @@
                                         <ItemsControl ItemsSource="{Binding Ingredients, UpdateSourceTrigger=PropertyChanged}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                        <Grid Width="140">
+                                                        <Grid Width="171">
                                                             <CheckBox  Content="{Binding Name}" IsChecked="{Binding IsSelected, Mode=TwoWay}" Command="{Binding DataContext.SelectIngredientCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
                                                                         CommandParameter="{Binding }"/>
                                                         </Grid>

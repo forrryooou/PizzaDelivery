@@ -1,4 +1,5 @@
-﻿using PizzaDelivery.Model.Data;
+﻿using PizzaDelivery.Model.CustomEntities;
+using PizzaDelivery.Model.Data;
 using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Model.Repositories;
 using PizzaDelivery.Model.Repositories.Base;
@@ -19,10 +20,21 @@ namespace LAB5.Repository
         private OrderLinesRepository detailRepository;
         private CategoryRepository categoryRepository;
         private PaymentRepository paymentRepository;
+        private ReportRepository reportRepository;
 
         public DbRepos()
         {
             context = new PizzaContext();
+        }
+
+        public IReportsRepos Reports
+        {
+            get
+            {
+                if (reportRepository == null)
+                    reportRepository = new ReportRepository(context);
+                return reportRepository;
+            }
         }
 
         public IRepository<PaymentMethod> PaymentMethods

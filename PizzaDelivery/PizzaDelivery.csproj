@@ -16,6 +16,7 @@
     <None Remove="View\Resourses\Images\back.png" />
     <None Remove="View\Resourses\Images\cart.png" />
     <None Remove="View\Resourses\Images\clients.png" />
+    <None Remove="View\Resourses\Images\download.png" />
     <None Remove="View\Resourses\Images\exit.png" />
     <None Remove="View\Resourses\Images\file.png" />
     <None Remove="View\Resourses\Images\ingredient.png" />
@@ -49,6 +50,9 @@
     <Resource Include="View\Resourses\Images\clients.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="View\Resourses\Images\download.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="View\Resourses\Images\exit.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -68,6 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">

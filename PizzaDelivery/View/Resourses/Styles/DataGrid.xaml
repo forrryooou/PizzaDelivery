@@ -140,14 +140,6 @@
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="Foreground" Value="Black"/>
             </Trigger>
-            <!--<MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsSelected" Value="False"/>
-                    <Condition Property="Selector.IsSelectionActive" Value="false"/>
-                </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="Foreground" Value="Black"/>
-            </MultiTrigger>-->
         </Style.Triggers>
     </Style>
 

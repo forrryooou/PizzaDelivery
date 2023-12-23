@@ -14,10 +14,10 @@ namespace PizzaDelivery.ViewModel.ForClientPages
         public ObservableCollection<Order> Orders { get => _orders; set { _orders = value; OnPropertyChanged(nameof(Orders)); } }
 
         DbRepos context;
-        public HistoryOfOrdersViewModel()
+        public HistoryOfOrdersViewModel(Client curClient)
         {
             context = new DbRepos();
-            Orders = new ObservableCollection<Order>(context.Orders.GetList().Where(o => o.ClientId == 2).OrderByDescending(o => o.Date).ToList());
+            Orders = new ObservableCollection<Order>(context.Orders.GetList().Where(o => o.ClientId == curClient.Id).OrderByDescending(o => o.Date).ToList());
             
         }
     }

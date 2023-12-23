@@ -110,8 +110,8 @@
     <Style x:Key="ingredientButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="White" />
         <Setter Property="Foreground" Value="Black" />
-        <Setter Property="MinHeight" Value="50" />
-        <Setter Property="MinWidth" Value="139" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Width" Value="190" />
         <Setter Property="Margin" Value="0"/>
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Template" >
@@ -134,13 +134,13 @@
     <Style x:Key="AddPhotoButtonStyle" TargetType="Button">
     <Setter Property="Background" Value="White" />
     <Setter Property="Foreground" Value="Black" />
-    <Setter Property="Height" Value="200" />
-        <Setter Property="Width" Value="200" />
+    <Setter Property="Height" Value="220" />
+        <Setter Property="Width" Value="220" />
         <Setter Property="FontSize" Value="12" />
     <Setter Property="Template" >
         <Setter.Value>
             <ControlTemplate TargetType="Button">
-                <Border Background="{TemplateBinding Background}" BorderThickness ="1,1,2,2" BorderBrush="#E1E1E1" CornerRadius="100">
+                <Border Background="{TemplateBinding Background}" BorderThickness ="1,1,2,2" BorderBrush="#E1E1E1" CornerRadius="110">
                     <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
                 </Border>
             </ControlTemplate>
@@ -157,8 +157,8 @@
     <Style x:Key="PizzaButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="White" />
         <Setter Property="Foreground" Value="Black" />
-        <Setter Property="MinHeight" Value="210" />
-        <Setter Property="MinWidth" Value="190" />
+        <Setter Property="Height" Value="210" />
+        <Setter Property="Width" Value="190" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Template" >
             <Setter.Value>
@@ -228,6 +228,28 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"  CornerRadius="12.5">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFC8C8C8" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="DownloadButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"  CornerRadius="10">
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
