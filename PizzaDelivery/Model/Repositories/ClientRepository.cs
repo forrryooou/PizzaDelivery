@@ -18,7 +18,7 @@ namespace PizzaDelivery.Model.Repositories
 
         public ObservableCollection<Client> GetList()
         {
-            return new ObservableCollection<Client>(context.Clients.Include(u=>u.User).ToList());
+            return new ObservableCollection<Client>(context.Clients.Include(u => u.User).ToList());
         }
 
         public Client GetItem(int id)

@@ -19,7 +19,7 @@ namespace PizzaDelivery.ViewModel.ForAdminPages
         public OrdersViewModel()
         {
             context = new DbRepos();
-            Orders = new ObservableCollection<Order> (context.Orders.GetList().OrderBy(o=>o.Date).OrderBy(o=>o.StatusId).Where(o => o.StatusId != 4).ToList());
+            Orders = new ObservableCollection<Order>(context.Orders.GetList().OrderBy(o => o.Date).OrderBy(o => o.StatusId).Where(o => o.StatusId != 4).ToList());
             Statuses = new ObservableCollection<OrderStatus>(context.Statuses.GetList());
             UpdateOrdersCommand = new RelayCommand(UpdateOrders);
         }
@@ -29,7 +29,7 @@ namespace PizzaDelivery.ViewModel.ForAdminPages
             foreach (var order in Orders)
             {
                 context.Orders.Update(order);
-                Orders = new ObservableCollection<Order>(context.Orders.GetList().OrderBy(o => o.Date).OrderBy(o => o.StatusId).Where(o=>o.StatusId != 4).ToList());
+                Orders = new ObservableCollection<Order>(context.Orders.GetList().OrderBy(o => o.Date).OrderBy(o => o.StatusId).Where(o => o.StatusId != 4).ToList());
             }
             context.Save();
         }

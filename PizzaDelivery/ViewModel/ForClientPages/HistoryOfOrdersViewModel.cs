@@ -1,8 +1,6 @@
 ﻿using LAB5.Repository;
 using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Utilities;
-using PizzaDelivery.View.AdminPages;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -18,7 +16,7 @@ namespace PizzaDelivery.ViewModel.ForClientPages
         {
             context = new DbRepos();
             Orders = new ObservableCollection<Order>(context.Orders.GetList().Where(o => o.ClientId == curClient.Id).OrderByDescending(o => o.Date).ToList());
-            
+
         }
     }
 }

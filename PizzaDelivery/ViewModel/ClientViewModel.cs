@@ -17,7 +17,7 @@ namespace PizzaDelivery.ViewModel
         public object CurrentView { get { return _currentView; } set { _currentView = value; OnPropertyChanged(nameof(CurrentView)); } }
 
         private Client _curClient;
-        public Client CurClient { get { return _curClient; } set { _curClient = value;OnPropertyChanged(nameof(CurClient)); } }
+        public Client CurClient { get { return _curClient; } set { _curClient = value; OnPropertyChanged(nameof(CurClient)); } }
 
         public ICommand ViewMenuCommand { get; set; }
         public ICommand ViewCartCommand { get; set; }
@@ -25,7 +25,7 @@ namespace PizzaDelivery.ViewModel
         public ICommand ViewAccountCommand { get; set; }
 
         private void Menu(object obj) => CurrentView = new MenuViewModel(this);
-        private void Cart(object obj) => CurrentView = new CartViewModel(PizzasInCart,CurClient);
+        private void Cart(object obj) => CurrentView = new CartViewModel(PizzasInCart, CurClient);
         private void Orders(object obj) => CurrentView = new HistoryOfOrdersViewModel(CurClient);
         private void Account(object obj) => CurrentView = new AccountViewModel(CurClient);
 

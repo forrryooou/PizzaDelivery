@@ -1,5 +1,4 @@
-﻿using PizzaDelivery.ViewModel;
-using PizzaDelivery.ViewModel.ForClientPages;
+﻿using PizzaDelivery.ViewModel.ForClientPages;
 using System.Windows;
 using System.Windows.Controls;
 

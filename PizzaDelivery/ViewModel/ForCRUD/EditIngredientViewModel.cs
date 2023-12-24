@@ -2,6 +2,7 @@
 using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Utilities;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,7 +15,14 @@ namespace PizzaDelivery.ViewModel.ForCRUD
         private int _price;
         private int _category;
         private ObservableCollection<IngredientCategory> _allCategories;
+        private string _errorMessage;
 
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { _errorMessage = value; OnPropertyChanged(nameof(ErrorMessage)); }
+        }
         public ObservableCollection<IngredientCategory> AllCategories
         {
             get { return _allCategories; }
@@ -55,18 +63,28 @@ namespace PizzaDelivery.ViewModel.ForCRUD
 
         private void UpdateIngredient(object obj)
         {
-            ingredient.Name = Name;
-            ingredient.Price = Price;
-            ingredient.CategoryId = Category;
-            context.Ingredients.Update(ingredient);
-            context.Save();
-            if (obj is Window window) window.Close();
+            if (string.IsNullOrWhiteSpace(Name) ||
+                Price == 0 || Category == null) ErrorMessage = "Заполнены не все поля";
+            else
+            {
+                ingredient.Name = Name;
+                ingredient.Price = Price;
+                ingredient.CategoryId = Category;
+                context.Ingredients.Update(ingredient);
+                context.Save();
+                if (obj is Window window) window.Close();
+            }
         }
         private void DeleteIngredient(object obj)
         {
-            context.Ingredients.Delete(ingredient.Id);
-            context.Save();
-            if (obj is Window window) window.Close();
+            var exist = context.Pizzas.GetList().Select(x => x.Ingredients.Where(i => i.Id == ingredient.Id)).FirstOrDefault();
+            if (exist == null)
+            {
+                context.Ingredients.Delete(ingredient.Id);
+                context.Save();
+                if (obj is Window window) window.Close();
+            }
+            else ErrorMessage = "Ингредиент нельзя удалить, он присутствует в пиццах";
         }
     }
 }

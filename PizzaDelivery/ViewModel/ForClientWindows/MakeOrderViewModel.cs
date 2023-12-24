@@ -1,12 +1,9 @@
 ﻿using LAB5.Repository;
 using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Utilities;
-using PizzaDelivery.View.ClientWindows;
 using PizzaDelivery.ViewModel.CustomEntities;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -111,7 +108,7 @@ namespace PizzaDelivery.ViewModel.ForClientWindows
                 context.Save();
                 if (obj is Window window) window.Close();
             }
-            
+
         }
     }
 }

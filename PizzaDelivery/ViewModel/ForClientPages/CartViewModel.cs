@@ -1,8 +1,6 @@
-﻿using LAB5.Repository;
-using PizzaDelivery.Model.Entities;
+﻿using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Utilities;
 using PizzaDelivery.View.ClientWindows;
-using PizzaDelivery.View.ViewForCRUD;
 using PizzaDelivery.ViewModel.CustomEntities;
 using PizzaDelivery.ViewModel.ForClientWindows;
 using System.Collections.ObjectModel;
@@ -70,7 +68,7 @@ namespace PizzaDelivery.ViewModel.ForClientPages
         private void SubtractFromQuantity(object obj)
         {
             if (obj is PizzaInCart pizza)
-            { 
+            {
                 TotalPrice -= pizza.Price / pizza.Quantity;
                 pizza.Price -= pizza.Price / pizza.Quantity;
                 pizza.Quantity--;
@@ -86,10 +84,10 @@ namespace PizzaDelivery.ViewModel.ForClientPages
         {
             if (obj is PizzaInCart pizza)
             {
-                TotalPrice+= pizza.Price / pizza.Quantity;
+                TotalPrice += pizza.Price / pizza.Quantity;
                 pizza.Price += pizza.Price / pizza.Quantity;
                 pizza.Quantity++;
-                
+
             }
         }
 

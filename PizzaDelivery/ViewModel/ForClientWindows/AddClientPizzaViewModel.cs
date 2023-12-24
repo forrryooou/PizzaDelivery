@@ -1,23 +1,17 @@
 ﻿using LAB5.Repository;
-using Microsoft.Win32;
 using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Utilities;
 using PizzaDelivery.ViewModel.CustomEntities;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows;
 using System.Globalization;
-using PizzaDelivery.View.AdminPages;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModel.ForClientWindows
 {
-    public class AddClientPizzaViewModel: ViewModelBase
+    public class AddClientPizzaViewModel : ViewModelBase
     {
         private int _price;
         private List<CategoryWithSelection> _allIngredients;

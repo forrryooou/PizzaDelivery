@@ -72,6 +72,7 @@
                 <Button Content="Добавить" Style="{StaticResource buttonStyle}"
                         Command="{Binding CreateIngredientCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                <TextBlock Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}" Foreground="Red"/>
             </StackPanel>
         </Grid>
 

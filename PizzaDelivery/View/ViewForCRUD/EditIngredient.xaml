@@ -79,41 +79,11 @@
                             Command="{Binding DeleteIngredientCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
                 </StackPanel>
-                
+                <TextBlock Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}" Foreground="Red"/>
             </StackPanel>
         </Grid>
 
     </Border>
 
-    <!--<Grid>
-        
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Название"/>
-            <TextBox Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Grid.Row="1" Text="Цена"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
-            <ComboBox Grid.Column="1" Grid.Row="2"
-                  ItemsSource="{Binding AllCategories}"
-                  DisplayMemberPath="Name"
-                  SelectedValuePath="Id"
-                  SelectedValue="{Binding Category, UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <Button Grid.Row="3" 
-            Content="Добавить" 
-            Command="{Binding EditIngredientCommand}"
-            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-        <Button Grid.Row="3" Grid.Column="1" 
-    Content="Удалить" 
-    Command="{Binding DeleteIngredientCommand}"
-    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-    </Grid>-->
+    
 </Window>

@@ -28,10 +28,10 @@ namespace PizzaDelivery.ViewModel.ForClientPages
 
         private Client curClient;
         private DbRepos context;
-        public AccountViewModel(Client client) 
-        { 
+        public AccountViewModel(Client client)
+        {
             context = new DbRepos();
-            curClient = context.Clients.GetList().First(c=> c.Id == client.Id);
+            curClient = context.Clients.GetList().First(c => c.Id == client.Id);
             Name = curClient.Name;
             Number = curClient.Number;
             if (curClient.Address != null) Address = curClient.Address;
@@ -80,7 +80,7 @@ namespace PizzaDelivery.ViewModel.ForClientPages
 
             if (canSave)
             {
-                ErrorMessage=string.Empty;
+                ErrorMessage = string.Empty;
                 context.Clients.Update(curClient);
                 context.Save();
                 context.Users.Update(curClient.User);

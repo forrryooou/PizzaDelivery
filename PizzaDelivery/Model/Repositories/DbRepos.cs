@@ -1,5 +1,4 @@
-﻿using PizzaDelivery.Model.CustomEntities;
-using PizzaDelivery.Model.Data;
+﻿using PizzaDelivery.Model.Data;
 using PizzaDelivery.Model.Entities;
 using PizzaDelivery.Model.Repositories;
 using PizzaDelivery.Model.Repositories.Base;

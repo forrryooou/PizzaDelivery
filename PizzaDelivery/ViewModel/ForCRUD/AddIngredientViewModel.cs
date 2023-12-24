@@ -14,7 +14,13 @@ namespace PizzaDelivery.ViewModel.ForCRUD
         private int _price;
         private int _category;
         private ObservableCollection<IngredientCategory> _allCategories;
+        private string _errorMessage;
 
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { _errorMessage = value; OnPropertyChanged(nameof(ErrorMessage)); }
+        }
         public ObservableCollection<IngredientCategory> AllCategories
         {
             get { return _allCategories; }
@@ -47,15 +53,20 @@ namespace PizzaDelivery.ViewModel.ForCRUD
 
         private void CreateIngredient(object obj)
         {
-            Ingredient newIngredient = new Ingredient();
-            newIngredient.Name = Name;
-            newIngredient.Price = Price;
-            newIngredient.CategoryId = Category;
+            if (string.IsNullOrWhiteSpace(Name) ||
+                Price == 0 || Category == null) ErrorMessage = "Заполнены не все поля";
+            else
+            {
+                Ingredient newIngredient = new Ingredient();
+                newIngredient.Name = Name;
+                newIngredient.Price = Price;
+                newIngredient.CategoryId = Category;
 
-            context.Ingredients.Create(newIngredient);
-            context.Save();
+                context.Ingredients.Create(newIngredient);
+                context.Save();
 
-            if (obj is Window window) window.Close();
+                if (obj is Window window) window.Close();
+            }
         }
     }
 }

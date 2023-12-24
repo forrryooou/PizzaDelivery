@@ -18,7 +18,7 @@ namespace LAB5.Repository
 
         public ObservableCollection<Order> GetList()
         {
-            return new ObservableCollection<Order>(context.Orders.Include(o => o.Client).Include(o=>o.Payment).Include(o => o.Status)
+            return new ObservableCollection<Order>(context.Orders.Include(o => o.Client).Include(o => o.Payment).Include(o => o.Status)
                 .Include(o => o.OrderLines).ThenInclude(ol => ol.Pizza).ToList());
         }
 

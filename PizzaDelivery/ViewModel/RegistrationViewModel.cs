@@ -1,7 +1,5 @@
 ﻿using LAB5.Repository;
-using PizzaDelivery.Model.Data;
 using PizzaDelivery.Model.Entities;
-using PizzaDelivery.Model.Repositories.Base;
 using PizzaDelivery.Utilities;
 using PizzaDelivery.View;
 using System.Linq;

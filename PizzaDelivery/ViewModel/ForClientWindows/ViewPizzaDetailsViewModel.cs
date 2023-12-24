@@ -2,7 +2,6 @@
 using PizzaDelivery.Utilities;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Input;
 
 namespace PizzaDelivery.ViewModel.ForClientWindows
 {
@@ -41,21 +40,13 @@ namespace PizzaDelivery.ViewModel.ForClientWindows
             set { _ingredients = value; OnPropertyChanged(nameof(Ingredients)); }
         }
 
-        public ICommand AddPizzaToCartCommand { get; set; }
+
 
         public ViewPizzaDetailsViewModel(Pizza pizza)
         {
             SelectedPizza = pizza;
             string ingredientArray = string.Join(",", SelectedPizza.Ingredients.Select(i => i.Name).ToList());
             Ingredients = FormatIngredientsList(ingredientArray);
-
-            AddPizzaToCartCommand = new RelayCommand(AddPizza);
-        }
-
-        private void AddPizza(object obj)
-        {
-
-
         }
 
         private string FormatIngredientsList(string input)
