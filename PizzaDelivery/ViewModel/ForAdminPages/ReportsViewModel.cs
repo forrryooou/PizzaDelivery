@@ -64,9 +64,7 @@ namespace PizzaDelivery.ViewModel.ForAdminPages
 
             if (!string.IsNullOrEmpty(filePath))
             {
-                string _filePath = Path.Combine(filePath, "output.csv");
-
-                GenerateCsvReport(DataTable.Orders, _filePath);
+                GenerateCsvReport(DataTable.Orders, filePath);
             }
         }
 
@@ -75,14 +73,14 @@ namespace PizzaDelivery.ViewModel.ForAdminPages
             var saveFileDialog = new SaveFileDialog
             {
                 Title = "Выберите папку",
-                Filter = "Все файлы (.)|.",
+                Filter = "CSV file (*.csv)|*.csv",
                 OverwritePrompt = false,
-                FileName = "Новый файл"
+                FileName = "Отчёт." + StartDate.ToShortDateString() + "-" + EndDate.ToShortDateString(),
             };
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                return Path.GetDirectoryName(saveFileDialog.FileName);
+                return saveFileDialog.FileName;
             }
 
             return null;
